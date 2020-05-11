@@ -1,0 +1,29 @@
+{
+  "name": "webgl",
+  "version": "1.0.0",
+  "description": "Proyecto para aprender a usar webgl 2.0",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rubenbc7/WebGL-2.0.git"
+  },
+  "keywords": [
+    "webgl",
+    "js",
+    "cg",
+    "shader",
+    "2D"
+  ],
+  "author": "rubenbc7",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/rubenbc7/WebGL-2.0/issues"
+  },
+  "homepage": "https://github.com/rubenbc7/WebGL-2.0#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
