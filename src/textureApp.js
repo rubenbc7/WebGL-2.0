@@ -1,7 +1,6 @@
 import Shader from './Engine/Shader/Shader.js';
 import Texture from './Engine/Texture.js';
 import Time from './Engine/Time.js';
-import Animation from './Engine/Animation.js';
 
 const canvas = document.getElementById('glcanvas');
 const gl = canvas.getContext('webgl2');
@@ -20,25 +19,18 @@ const main = async ()=>{
 
     gl.useProgram(program);
 
-    const scale = 0.02;
-    const spWidth = ((137 * scale) / 2) / 6;
-    const spHeight = ((50 * scale) / 2) / 3;
-
-    const texWidth = 1/6;
-    const texHeight = 1/3;
-
     const appInfo = {
         triangleCoords: [
-            -spWidth, -spHeight, 
-            spWidth, -spHeight, 
-            -spWidth, spHeight, 
-            spWidth, spHeight
+            -0.5, -0.5, 
+            0.5, -0.5, 
+            -0.5, 0.5, 
+            0.5, 0.5
         ],
         textureCoords:[
             0, 0,
-            texWidth, 0,
-            0, texHeight,
-            texWidth, texHeight
+            1, 0,
+            0, 1,
+            1, 1
         ],
         buffers: {
             positionBuffer: gl.createBuffer(),
@@ -59,27 +51,10 @@ const main = async ()=>{
             projectionMatrix: mat4.create()
         },
         textures: [
-            new Texture(gl, 'images/catspritesoriginal.gif')
+            new Texture(gl, 'images/webgltexture.png')
         ],
-        time: new Time(),
-        animations: [
-            new Animation('run', 6, texWidth, texHeight, 13)
-        ]
+        time: new Time()
     }
-
-    //Running animation state starts
-
-    const runAnim = appInfo.animations[0];
-    runAnim.play();
-
-    canvas.addEventListener('click', ()=>{
-        if(runAnim.isPlaying){
-            runAnim.stop();
-        }else{
-            runAnim.play();
-        }
-    });
-    //Running animation state ends
 
     mat4.perspective(
         appInfo.matrices.projectionMatrix,
@@ -96,7 +71,7 @@ const main = async ()=>{
     );
 
     const update = ()=>{
-        //console.log(appInfo.time.deltaTime());
+        console.log(appInfo.time.deltaTime());
         gl.clearColor(0, 0, 0, 1);
         gl.clear(gl.COLOR_BUFFER_BIT);
 
@@ -108,7 +83,7 @@ const main = async ()=>{
 
         //texture
         gl.bindBuffer(gl.ARRAY_BUFFER, appInfo.buffers.textureBuffer);
-        gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(runAnim.getTexCoords()), gl.STATIC_DRAW);
+        gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(appInfo.textureCoords), gl.STATIC_DRAW);
         gl.enableVertexAttribArray(appInfo.attribs.texturePosition);
         gl.vertexAttribPointer(appInfo.attribs.texturePosition, 2, gl.FLOAT, gl.FALSE, 0, 0);
 

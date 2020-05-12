@@ -6,6 +6,7 @@ const port = 3000;
 app.use('/src',express.static('src'));
 app.use('/public',express.static('public'));
 app.use('/shaders',express.static('shaders'));
+app.use('/images', express.static('images'));
 
 app.get('/', (req, res)=>{
   res.send('<h1>Hello there</h1>');
@@ -32,6 +33,9 @@ app.get('/translate', (req, res)=>{
   app.get('/externalFile', (req, res)=>{
     res.sendFile(`${__dirname}/public/externalFile.htm`);
   }); 
+  app.get('/texture', (req, res)=>{
+    res.sendFile(`${__dirname}/public/textureapp.htm`);
+  });
   app.get('/sprite', (req, res)=>{
     res.sendFile(`${__dirname}/public/SpriteSheetApp.htm`);
   }); 
