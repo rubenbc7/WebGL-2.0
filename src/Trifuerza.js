@@ -65,7 +65,11 @@ const triangleCoords = [
 
     -1.0, -0.5,
     -0.5, 0.25,
-    0.0,-0.5
+    0.0,-0.5,
+
+    -0.5, 0.25,
+    0.0, 1.0,
+    0.5,0.25
 ];
 
 const vertexColor = [
@@ -73,6 +77,9 @@ const vertexColor = [
 1,1,1,
 1,1,0,
 
+1,1,0,
+1,1,1,
+1,1,1,
 1,1,0,
 1,1,1,
 1,1,1
@@ -94,4 +101,4 @@ const color = gl.getAttribLocation(program, 'color');
 gl.enableVertexAttribArray(color);
 gl.vertexAttribPointer(color, 3, gl.FLOAT, gl.FALSE, 0, 0);
 
-gl.drawArrays(gl.TRIANGLES, 0, 6) 
+gl.drawArrays(gl.TRIANGLES, 0, 9) 
