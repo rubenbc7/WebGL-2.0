@@ -30,7 +30,7 @@ app.get('/translate', (req, res)=>{
     res.sendFile(`${__dirname}/public/projectionModelViewMatrix.htm`);
   });   
   app.get('/externalFile', (req, res)=>{
-    res.sendFile(`${__dirname}/public/externalFIle.htm`);
+    res.sendFile(`${__dirname}/public/projectionModelViewMatrix.htm`);
   }); 
   app.get('/texture', (req, res)=>{
     res.sendFile(`${__dirname}/public/textureapp.htm`);
