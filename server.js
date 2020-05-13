@@ -24,9 +24,7 @@ app.get('/translate', (req, res)=>{
   app.get('/Trifuerza', (req, res)=>{
     res.sendFile(`${__dirname}/public/Trifuerza.htm`);
   });
-  app.get('/Trifuerza-shader', (req, res)=>{
-    res.sendFile(`${__dirname}/public/Trifuerza-shader.htm`);
-  });    
+   
   app.get('/matrices', (req, res)=>{
     res.sendFile(`${__dirname}/public/projectionModelViewMatrix.htm`);
   });   
